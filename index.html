@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Network Monitoring Platform</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #030420;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .header, .footer {
+      text-align: center;
+      padding: 20px 0;
+      background-color: #030420;
+      color: #ddd;
+    }
+    .header h1, .footer p {
+      margin: 0;
+      font-size: 24px;
+    }
+    .main-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
+    .main-content .content {
+      width: 48%;
+      background-color: #0a0f27;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      margin-bottom: 20px;
+      opacity: 0; /* Hide initially */
+      transform: scale(0.95); /* Slightly smaller initially */
+      transition: opacity 1s, transform 1s;
+    }
+    .main-content .content.visible {
+      opacity: 1; /* Show when class 'visible' is added */
+      transform: scale(1); /* Zoom to normal size */
+    }
+    .main-content .content h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .main-content .content p {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .main-content .content .btn {
+      display: block;
+      width: fit-content;
+      padding: 10px 20px;
+      background-color: #ddd;
+      color: #22223b;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 5px;
+      margin-top: 10px;
+      text-decoration: none;
+    }
+    .main-content .content .btn:hover {
+      background-color: #bbb;
+    }
+    .carousel {
+      background-color: #030420;
+      padding-top: 20px;
+      border-radius: 10px;
+      color: #fff;
+      text-align: center;
+    }
+    .carousel h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .carousel p {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .login-section {
+      text-align: center;
+      margin-bottom: 20px;
+      opacity: 0; /* Hide initially */
+      transform: scale(0.95); /* Slightly smaller initially */
+      transition: opacity 1s, transform 1s;
+    }
+    .login-section.visible {
+      opacity: 1; /* Show when class 'visible' is added */
+      transform: scale(1); /* Zoom to normal size */
+    }
+    .login-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ddd;
+      color: #22223b;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    .login-button:hover {
+      text-decoration: none;
+    }
+    
+    .login-text {
+      margin-top: 10px;
+      color: #bbb;
+      font-size: 14px;
+    }
+    a {
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      color: #333577;
+    }
+    a:hover,a:focus {
+      color: #333577;
+      font-weight: bold;
+    }
+    .blinking-cursor {
+      font-weight: 100;
+      font-size: 22px;
+      color: #ddd;
+      animation: blink 0.7s step-end infinite;
+    }
+    @keyframes blink {
+      from, to { color: transparent }
+      50% { color: #ddd }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="carousel">
+    <h2><span id="typing-heading"></span><span class="blinking-cursor">|</span></h2>
+  </div>
+
+  <div class="login-section">
+    <a href="#" class="login-button">Login</a>
+    <p class="login-text">Already have an account? Login here to access your dashboard.</p>
+  </div>
+  
+  <div class="container">
+    <div class="main-content">
+      <div class="content">
+        <h2>Real-Time Monitoring</h2>
+        <p>Benefit from real-time monitoring of the health of your MPLS network with our integrated monitoring system. Detect changes instantly and receive immediate notifications to ensure a swift response to network problems.</p>
+      </div>
+      <div class="content">
+        <h2>Historical Tracking</h2>
+        <p>Track network changes over time with our historical tracking feature. Review past events, troubleshoot issues, and identify trends in network performance for better decision-making.</p>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="content">
+        <h2>Topology Visualization</h2>
+        <p>Visualize your network topology dynamically. See the interconnected routers and paths of MPLS Label Switched Paths (LSPs) in real-time. Easily identify the status of each LSP with intuitive color-coded indicators.</p>
+        <!-- <a href="{% url 'landing_page_topology' %}" class="btn">Learn More</a>-->
+      </div>
+      <div class="content">
+        <h2>Instant Notifications</h2>
+        <p>Stay informed with instant notifications when there are changes in your network. Receive alerts directly on your device, ensuring you are always up-to-date with your network's status.</p>
+       <!-- <a href="{% url 'landing_page_realtime' %}" class="btn">Learn More</a>-->
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2024 Network Monitoring Platform. All rights reserved.</p>
+  </div>
+  <script>
+    const headingText = "Welcome to Our Network Monitoring Platform";
+    let headingIndex = 0;
+
+    function typeHeading() {
+      document.getElementById("typing-heading").textContent += headingText.charAt(headingIndex);
+      headingIndex++;
+      if (headingIndex < headingText.length) {
+        setTimeout(typeHeading, 100); // Slower typing speed
+      }
+    }
+
+    function showContent() {
+      const contents = document.querySelectorAll('.main-content .content');
+      contents.forEach((content, index) => {
+        setTimeout(() => {
+          content.classList.add('visible');
+        }, index * 500); // delay each container by 500ms
+      });
+      // Show the login section after all content containers
+      setTimeout(() => {
+        document.querySelector('.login-section').classList.add('visible');
+      }, contents.length * 500);
+    }
+
+    window.onload = function() {
+      typeHeading();
+      showContent();
+    };
+  </script>
+</body>
+</html>
